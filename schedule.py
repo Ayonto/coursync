@@ -7,7 +7,7 @@ import json
 
 
 def scrape_full_schedule(): 
-    url = "https://usis-cdn.eniamza.com/usisdump.json"
+    url = "" # url to fetch data 
     req = requests.get(url)
 
     json_data = json.dumps(req.json(), indent = 2)
@@ -98,9 +98,10 @@ def filter(course, exclude_empty_seats):
 def generate_all_schedules(taken_courses, exclude_empty_seats):
     # type of taken_courses = [{'course': 'CSE220', 'section': '5', 'faculty': 'ABS'}, {'course': 'CSE250', 'section': '1', 'faculty': ''}, {'course': 'CSE320', 'section': '2', 'faculty': ''}, {'course': 'ECO101', 'section': '3', 'faculty': ''}]
 
-    print(f"DEBUG: EXCLUDE EMPTY SEAT: {exclude_empty_seats}")
-    print("#######################################")
-    print(taken_courses)
+    # Debugging
+    # print(f"EXCLUDE EMPTY SEAT: {exclude_empty_seats}")
+    # print("#######################################")
+    # print(taken_courses)
 
 
     all_combinations = []
@@ -143,47 +144,10 @@ def generate_all_schedules(taken_courses, exclude_empty_seats):
         c1_schedules = filter(taken_courses[0], exclude_empty_seats)
 
         # all_combinations = list(itertools.product(c1_schedules))
-
         
     valid_combinations= []
     for combination in all_combinations: 
         if not conflicts(combination): valid_combinations.append(combination)
-    
-
-    #data = scrape_full_schedule
-
-    # c1 = taken_courses[0]["course"]
-    # c2 = taken_courses[1]["course"]
-    # c3 = taken_courses[2]["course"]
-    # c4 = taken_courses[3]["course"]
-    # Extract dictionaries for each course code
-
-    # c1_schedules = [course for course in data if course["courseCode"] == c1]
-    # c2_schedules = [course for course in data if course["courseCode"] == c2]
-    # c3_schedules = [course for course in data if course["courseCode"] == c3]
-    # c4_schedules = [course for course in data if course["courseCode"] == c4]
-
-    # Find all possible combinations of the 4 course schedules
-    # all_combinations = list(itertools.product(c1_schedules, c2_schedules, c3_schedules, c4_schedules))
-
-    # for i, schedule in enumerate(all_combinations):
-    #     print(f"Schedule {i+1}:")
-    #     for course in schedule:
-    #         print(course)
-    #     print("\n")
-
-    # valid_combinations= []
-    # for combination in all_combinations: 
-    #     if not conflicts(combination): valid_combinations.append(combination)
-
-    # Filter out combinations with time conflicts
-    # valid_combinations = [combination for combination in all_combinations if no_conflicts(combination)]
-
-    # for i, schedule in enumerate(valid_combinations):
-    #     print(f"Valid Schedule {i+1}:")
-    #     for course in schedule:
-    #         print(course)
-    #     print("\n")
 
     print(f"Combinations: {len(valid_combinations)}")
     return valid_combinations

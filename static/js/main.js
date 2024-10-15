@@ -51,32 +51,6 @@ document.getElementById("generate-btn").addEventListener("click", () => {
         hideLoading();
     });
     
-
-
-
-
-    /////////////////////////////////////////////////////////////////////
-    // Send request to Flask backend
-    // fetch('/generate_schedule', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ courses })
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     hideLoading();
-    //     schedules = data;  // The response is a list of tuples
-    //     currentIndex = 0;
-    //     displaySchedule(currentIndex);  // Display the first schedule combination
-    // })
-    // .catch(err => {
-    //     console.error("Error fetching schedules:", err);
-    //     hideLoading();
-    // });
-
-    //////////////////////////////////////////////////////////////////////////
 });
 
 let schedules = [];
