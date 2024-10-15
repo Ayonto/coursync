@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourSync</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+</head>
+<body>
+    <div class="heading">
+        <h1>CourSync</h1> 
+        <p> - Harmonize Your Courses, Maximize Your Time</p>
+    </div>
+
+    <!-- <h1>Course Crafter</h1> -->
+
+    <!-- Input Fields for Course Names, Sections, and Faculty -->
+    <div class="input-row">
+        <input id="course1" type="text" placeholder="Course 1 (e.g., CSE220)">
+        <input id="section1" type="number" placeholder="Preferred Section (e.g., 6)">
+        <input id="faculty1" type="text" placeholder="Faculty Initial (e.g., PQR)">
+    </div>
+    <div class="input-row">
+        <input id="course2" type="text" placeholder="Course 2 (e.g., MAT215)">
+        <input id="section2" type="number" placeholder="Preferred Section (e.g., 3)">
+        <input id="faculty2" type="text" placeholder="Faculty Initial (e.g., ABC)">
+    </div>
+    <div class="input-row">
+        <input id="course3" type="text" placeholder="Course 3 (e.g., BIO101)">
+        <input id="section3" type="number" placeholder="Preferred Section (e.g., 5)">
+        <input id="faculty3" type="text" placeholder="Faculty Initial (e.g., XYZ)">
+    </div>
+    <div class="input-row">
+        <input id="course4" type="text" placeholder="Course 4 (e.g., PHY111)">
+        <input id="section4" type="number" placeholder="Preferred Section (e.g., 1)">
+        <input id="faculty4" type="text" placeholder="Faculty Initial (e.g., DEF)">
+    </div>
+
+    <!-- Exclude Empty Seat Checkbox -->
+    <div class ="checkbox">
+        <label>
+            <input id="exclude-empty-seats" type="checkbox">
+            Exclude Sections with No Seats
+        </label>
+    </div>
+
+    <!-- <label>
+        <input id="exclude-empty-seats" type="checkbox">
+        Exclude Sections with No Seats
+    </label> -->
+
+    <!-- Button to Generate Schedule -->
+
+    <div class = "gen-btn-style"><button id="generate-btn">Generate Schedule</button></div>
+
+    <!-- <button id="generate-btn">Generate Schedule</button> -->
+
+    <!-- Loading Spinner -->
+    <div id="loading">Loading...</div>
+
+    <!-- Schedule Table -->
+    <table id="schedule-table">
+        <tr>
+            <th>Time/Day</th>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+        </tr>
+        <tr><td>08:00 AM-09:20 AM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>09:30 AM-10:50 AM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>11:00 AM-12:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>12:30 PM-01:50 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>02:00 PM-03:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>03:30 PM-04:50 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>05:00 PM-06:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+
+    <!-- Previous/Next Buttons -->
+
+    <div class = "btn-container">
+        <button id="previous-btn">Previous</button>
+        <button id="next-btn">Next</button>
+    </div>
+
+    <hr>
+    <p class = "cpright">© s.i.ayonto</p>
+
+    <!-- <button id="previous-btn">Previous</button>
+    <button id="next-btn">Next</button> -->
+
+    <!-- Link to external JS file -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

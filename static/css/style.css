@@ -1,0 +1,142 @@
+/* Basic page and table styling */
+body {
+    font-family:cursive;
+    margin: 20px;
+    background-color: #f7f7f3;
+}
+
+.heading {
+
+    display: flex;
+    align-items: center;
+    
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+    color: #2e2c2c;
+
+    margin-bottom: 30px;
+}
+
+.heading p { 
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+
+    color: #5a5454;
+    
+}
+
+
+.checkbox { 
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+    margin-top:15px;
+
+    color: #403e3e;
+
+}
+
+.gen-btn-style { 
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+    margin-top: 15px;
+
+
+
+}
+
+.input-row {
+
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+
+input[type="text"], input[type="number"] {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+
+    font-family:cursive;
+}
+
+button {
+    /* margin: 10px; */
+    margin-top: 5px;
+    padding: 10px 20px;
+    background-color: #363434;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family:cursive;
+}
+
+button:hover {
+    background-color: #94928d;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between; /* Pushes buttons to opposite ends */
+    /* padding: 0 20px; Optional padding to add space on the sides */
+}
+
+.previous-btn, .next-button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+
+.cpright { 
+    color:rgb(80, 80, 80);
+    font-weight:bold;
+}
+
+
+#loading {
+    display: none;
+    font-size: 20px;
+    color: #2e2c2c;
+}
+
+#schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    border: 1px solid #403E3E;
+    color: #403e3e;
+}
+
+#schedule-table th, #schedule-table td {
+    
+    border: 1px dotted #403E3E;
+    padding: 10px;
+    text-align: center;
+}
+
+#schedule-table th {
+    background-color: #e8e6e0;
+}
+#schedule-table td:nth-child(1) { 
+    background-color: #e8e6e0;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
