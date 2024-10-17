@@ -7,7 +7,7 @@ import json
 
 
 def scrape_full_schedule(): 
-    url = "" # url to fetch data 
+    url = "https://usis-cdn.eniamza.com/usisdump.json" 
     req = requests.get(url)
 
     json_data = json.dumps(req.json(), indent = 2)
@@ -72,14 +72,15 @@ def conflicts(courses):
     
     return False  # No conflicts found
 
-def filter(course, exclude_empty_seats): 
+def filter(course, exclude_empty_seats):
+    course_code = course["course"][0:3].upper() + course["course"][3:]
     section = course["section"]
     faculty = course["faculty"]
     valid_course_details = []
 
 
     for c in data:
-        if(c["courseCode"] == course["course"]):
+        if(c["courseCode"] == course_code):
             if(exclude_empty_seats): # if seat is empty exclude section
                 if(c["defaultSeatCapacity"] - c["totalFillupSeat"] <= 0):
                     continue
@@ -106,10 +107,6 @@ def generate_all_schedules(taken_courses, exclude_empty_seats):
 
     all_combinations = []
     if(len(taken_courses) == 4): 
-        c1 = taken_courses[0]["course"]
-        c2 = taken_courses[1]["course"]
-        c3 = taken_courses[2]["course"]
-        c4 = taken_courses[3]["course"]
 
         c1_schedules = filter(taken_courses[0], exclude_empty_seats)
         c2_schedules = filter(taken_courses[1], exclude_empty_seats)
@@ -119,9 +116,6 @@ def generate_all_schedules(taken_courses, exclude_empty_seats):
         all_combinations = list(itertools.product(c1_schedules, c2_schedules, c3_schedules, c4_schedules))
             
     elif(len(taken_courses) == 3): 
-        c1 = taken_courses[0]["course"]
-        c2 = taken_courses[1]["course"]
-        c3 = taken_courses[2]["course"]
 
         c1_schedules = filter(taken_courses[0], exclude_empty_seats)
         c2_schedules = filter(taken_courses[1], exclude_empty_seats)
@@ -130,20 +124,15 @@ def generate_all_schedules(taken_courses, exclude_empty_seats):
         all_combinations = list(itertools.product(c1_schedules, c2_schedules, c3_schedules))
 
     elif(len(taken_courses) == 2): 
-        c1 = taken_courses[0]["course"]
-        c2 = taken_courses[1]["course"]
-
         c1_schedules = filter(taken_courses[0], exclude_empty_seats)
         c2_schedules = filter(taken_courses[1], exclude_empty_seats)
 
         all_combinations = list(itertools.product(c1_schedules, c2_schedules))
 
     elif(len(taken_courses) == 1): 
-        c1 = taken_courses[0]["course"]
-
         c1_schedules = filter(taken_courses[0], exclude_empty_seats)
 
-        # all_combinations = list(itertools.product(c1_schedules))
+        all_combinations = list(itertools.product(c1_schedules))
         
     valid_combinations= []
     for combination in all_combinations: 
