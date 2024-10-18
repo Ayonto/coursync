@@ -14,29 +14,19 @@
   ],
   "headers": [
     {
-      "source": "/static/(.*)", 
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, max-age=0"
-        }
-      ]
-    },
-    {
-      "source": "/(.*\\.css)",  
-      "headers": [
+          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        },
         {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, max-age=0"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",  
-      "headers": [
+          "key": "Pragma",
+          "value": "no-cache"
+        },
         {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, max-age=0"
+          "key": "Expires",
+          "value": "0"
         }
       ]
     }
