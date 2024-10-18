@@ -76,6 +76,7 @@ def filter(course, exclude_empty_seats):
     course_code = course["course"][0:3].upper() + course["course"][3:]
     section = course["section"]
     faculty = course["faculty"]
+    avoid = course["avoid"]
     valid_course_details = []
 
 
@@ -87,6 +88,11 @@ def filter(course, exclude_empty_seats):
             if(faculty != ''): #only keep prefered faculty
                 if(c["empShortName"] != faculty.upper()): 
                     continue
+            
+            if(avoid != ''): 
+                if(c["empShortName"] == avoid.upper()): 
+                    continue
+            
             if (section != ''): #only keep prefered section
                 if(int(c["courseDetails"][-3:-1]) != int(section)): 
                     continue
@@ -106,6 +112,17 @@ def generate_all_schedules(taken_courses, exclude_empty_seats):
 
 
     all_combinations = []
+
+    if(len(taken_courses) == 5): 
+
+        c1_schedules = filter(taken_courses[0], exclude_empty_seats)
+        c2_schedules = filter(taken_courses[1], exclude_empty_seats)
+        c3_schedules = filter(taken_courses[2], exclude_empty_seats)
+        c4_schedules = filter(taken_courses[3], exclude_empty_seats)
+        c5_schedules = filter(taken_courses[4], exclude_empty_seats)
+
+        all_combinations = list(itertools.product(c1_schedules, c2_schedules, c3_schedules, c4_schedules, c5_schedules))
+    
     if(len(taken_courses) == 4): 
 
         c1_schedules = filter(taken_courses[0], exclude_empty_seats)

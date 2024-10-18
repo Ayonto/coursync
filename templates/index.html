@@ -18,26 +18,93 @@
     <!-- <h1>Course Crafter</h1> -->
 
     <!-- Input Fields for Course Names, Sections, and Faculty -->
-    <div class="input-row">
+
+
+    <div class="container">
+        <!-- Courses Section -->
+        <div class="courses">
+            <div class="container-text">
+                <p>Course</p>
+            </div>
+            
+            <input id="course1" type="text" placeholder="Course 1 (e.g., CSE220)">
+            <input id="course2" type="text" placeholder="Course 2 (e.g., CSE250)">
+            <input id="course3" type="text" placeholder="Course 3 (e.g., CSE320)">
+            <input id="course4" type="text" placeholder="Course 4 (e.g., MAT215)">
+            <input id="course5" type="text" placeholder="Course 5 (e.g., BIO101)">
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter">
+            <div class="container-text">
+                <p >Filter</p>
+            </div>
+            
+            <div class="filter-row">
+                <input id="section1" type="number" placeholder="Preferred section (e.g., 3)">
+                <input id="faculty1" type="text" placeholder="Preferred Fauclty (e.g., ABC)">
+                <input id="avoid1" type="text" placeholder="Avoid faculty (e.g., ABC)">
+            </div>
+            <div class="filter-row">
+                <input id="section2" type="number" placeholder="Preferred section (e.g., 1)">
+                <input id="faculty2" type="text" placeholder="Preferred Faculty (e.g., DEF)">
+                <input id="avoid2" type="text" placeholder="Avoid faculty (e.g., DEF)">
+            </div>
+            <div class="filter-row">
+                <input id="section3" type="number" placeholder="Preferred section (e.g., 4)">
+                <input id="faculty3" type="text" placeholder="Preferred Faculty (e.g., MNO)">
+                <input id="avoid3" type="text" placeholder="Avoid faculty (e.g., MNO)">
+            </div>
+            <div class="filter-row">
+                <input id="section4" type="number" placeholder="Preferred section (e.g., 1)">
+                <input id="faculty4" type="text" placeholder="Preferred Faculty (e.g., PQR)">
+                <input id="avoid4" type="text" placeholder="Avoid faculty (e.g., PQR)">
+            </div>
+            <div class="filter-row">
+                <input id="section5" type="number" placeholder="Preferred section (e.g., 5)">
+                <input id="faculty5" type="text" placeholder="Preferred Faculty (e.g., XYZ)">
+                <input id="avoid5" type="text" placeholder="Avoid faculty (e.g., XYZ)">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- <div class="input-row">
         <input id="course1" type="text" placeholder="Course 1 (e.g., CSE220)">
         <input id="section1" type="number" placeholder="Preferred Section (e.g., 6)">
         <input id="faculty1" type="text" placeholder="Faculty Initial (e.g., PQR)">
+        <input id="avoid1" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
     </div>
     <div class="input-row">
         <input id="course2" type="text" placeholder="Course 2 (e.g., MAT215)">
         <input id="section2" type="number" placeholder="Preferred Section (e.g., 3)">
         <input id="faculty2" type="text" placeholder="Faculty Initial (e.g., ABC)">
+        <input id="avoid2" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
     </div>
     <div class="input-row">
         <input id="course3" type="text" placeholder="Course 3 (e.g., BIO101)">
         <input id="section3" type="number" placeholder="Preferred Section (e.g., 5)">
         <input id="faculty3" type="text" placeholder="Faculty Initial (e.g., XYZ)">
+        <input id="avoid3" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
     </div>
     <div class="input-row">
         <input id="course4" type="text" placeholder="Course 4 (e.g., PHY111)">
         <input id="section4" type="number" placeholder="Preferred Section (e.g., 1)">
         <input id="faculty4" type="text" placeholder="Faculty Initial (e.g., DEF)">
+        <input id="avoid4" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
     </div>
+    <div class="input-row">
+        <input id="course5" type="text" placeholder="Course 5 (e.g., PHY111)">
+        <input id="section5" type="number" placeholder="Preferred Section (e.g., 19)">
+        <input id="faculty5" type="text" placeholder="Faculty Initial (e.g., DEF)">
+        <input id="avoid5" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
+    </div> -->
+
+
+
+
 
     <!-- Exclude Empty Seat Checkbox -->
     <div class ="checkbox">
@@ -47,10 +114,6 @@
         </label>
     </div>
 
-    <!-- <label>
-        <input id="exclude-empty-seats" type="checkbox">
-        Exclude Sections with No Seats
-    </label> -->
 
     <!-- Button to Generate Schedule -->
 
@@ -62,25 +125,28 @@
     <div id="loading">Loading...</div>
 
     <!-- Schedule Table -->
-    <table id="schedule-table">
-        <tr>
-            <th>Time/Day</th>
-            <th>Sunday</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-        </tr>
-        <tr><td>08:00 AM-09:20 AM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>09:30 AM-10:50 AM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>11:00 AM-12:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>12:30 PM-01:50 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>02:00 PM-03:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>03:30 PM-04:50 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>05:00 PM-06:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    </table>
+    <div class="table-container">
+
+        <table id="schedule-table">
+            <tr>
+                <th>Time/Day</th>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+            <tr><td>08:00 AM-09:20 AM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>09:30 AM-10:50 AM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>11:00 AM-12:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>12:30 PM-01:50 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>02:00 PM-03:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>03:30 PM-04:50 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>05:00 PM-06:20 PM</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+    </div>
 
     <!-- Previous/Next Buttons -->
 

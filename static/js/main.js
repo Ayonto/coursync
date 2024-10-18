@@ -2,26 +2,36 @@ document.getElementById("generate-btn").addEventListener("click", () => {
     const course1 = document.getElementById("course1").value;
     const section1 = document.getElementById("section1").value;
     const faculty1 = document.getElementById("faculty1").value;
+    const avoid1 = document.getElementById("avoid1").value;
 
     const course2 = document.getElementById("course2").value;
     const section2 = document.getElementById("section2").value;
     const faculty2 = document.getElementById("faculty2").value;
+    const avoid2 = document.getElementById("avoid2").value;
 
     const course3 = document.getElementById("course3").value;
     const section3 = document.getElementById("section3").value;
     const faculty3 = document.getElementById("faculty3").value;
+    const avoid3 = document.getElementById("avoid3").value;
 
     const course4 = document.getElementById("course4").value;
     const section4 = document.getElementById("section4").value;
     const faculty4 = document.getElementById("faculty4").value;
+    const avoid4 = document.getElementById("avoid4").value;
+
+    const course5 = document.getElementById("course5").value;
+    const section5 = document.getElementById("section5").value;
+    const faculty5 = document.getElementById("faculty5").value;
+    const avoid5 = document.getElementById("avoid5").value;
 
     const excludeEmptySeats = document.getElementById("exclude-empty-seats").checked;
 
     const courses = [
-        { course: course1, section: section1, faculty: faculty1 },
-        { course: course2, section: section2, faculty: faculty2 },
-        { course: course3, section: section3, faculty: faculty3 },
-        { course: course4, section: section4, faculty: faculty4 }
+        { course: course1, section: section1, faculty: faculty1, avoid: avoid1 },
+        { course: course2, section: section2, faculty: faculty2, avoid: avoid2 },
+        { course: course3, section: section3, faculty: faculty3, avoid: avoid3 },
+        { course: course4, section: section4, faculty: faculty4, avoid: avoid4 },
+        { course: course5, section: section5, faculty: faculty5, avoid: avoid5 }
     ].filter(entry => entry.course); // Filter out entries with empty course fields
 
     // Display loading spinner
@@ -73,9 +83,10 @@ function displaySchedule(index) {
         const times = course.classLabSchedule.split(',');
         times.forEach(timeSlot => {
             const [day, time] = timeSlot.match(/[A-Za-z]+|\d{2}:\d{2} [APM]{2}-\d{2}:\d{2} [APM]{2}/g);
-            console.log(course.courseCode);
-            console.log(day);
-            console.log(time);
+            
+            // console.log(course.courseCode);
+            // console.log(day);
+            // console.log(time);
 
             // Determine the column based on the day
             let col = -1;

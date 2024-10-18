@@ -3,10 +3,107 @@ body {
     font-family:cursive;
     margin: 20px;
     background-color: #f7f7f3;
+    /* justify-content: center; */
+    align-items: center;
 }
 
-.heading {
+.container {
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
 
+    align-items: center;
+    
+    display: flex;
+    border-radius: 10px;
+
+    overflow-x: auto;
+}
+
+.container-text { 
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+    color: #2e2c2c;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.container-text p { 
+    margin: 0px;
+}
+
+/* Courses Section */
+.courses {
+    background-color: #a8ac98;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    
+    padding: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.courses input {
+    /* width: 150px;  */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Filter Section */
+.filter {
+    background-color: #c3c4b5;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+    
+    padding: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+}
+
+.filter input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* .filter input:nth-child(1) {
+    width: 150px; 
+}
+
+.filter input:nth-child(2) {
+    width: 150px; 
+}
+
+.filter input:nth-child(3) {
+    width: 150px; 
+} */
+
+/* Prevent wrapping of rows */
+.filter-row, .courses {
+    white-space: nowrap;
+}
+
+
+
+
+.heading {
+    
     display: flex;
     align-items: center;
     
@@ -29,6 +126,20 @@ body {
 }
 
 
+/* .input-row {
+
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+
+    display: flex;
+    margin-bottom: 10px;
+}
+ */
+
+
+
 .checkbox { 
     max-width: fit-content;
     margin-left: auto; 
@@ -37,8 +148,8 @@ body {
     margin-top:15px;
 
     color: #403e3e;
-
-}
+    
+}            
 
 .gen-btn-style { 
     max-width: fit-content;
@@ -49,18 +160,7 @@ body {
 
 
 
-}
-
-.input-row {
-
-    max-width: fit-content;
-    margin-left: auto; 
-    margin-right: auto;
-
-
-    display: flex;
-    margin-bottom: 10px;
-}
+}    
 
 
 
@@ -76,11 +176,14 @@ button {
     /* margin: 10px; */
     margin-top: 5px;
     padding: 10px 20px;
-    background-color: #363434;
+    background-color: #817669;
     color: white;
     border: none;
     cursor: pointer;
     font-family:cursive;
+    font-weight: bold;
+
+    border-radius: 5px;
 }
 
 button:hover {
@@ -111,11 +214,18 @@ button:hover {
     color: #2e2c2c;
 }
 
+.table-container { 
+    width: 100%;
+    overflow-x:auto;
+}
 #schedule-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 
+
+    /* overflow-x: auto; */
+    
     border: 1px solid #403E3E;
     color: #403e3e;
 }

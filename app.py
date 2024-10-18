@@ -24,20 +24,25 @@ def generate_schedule():
     courses = data.get('courses', [])
     exclude_empty_seats = data.get('excludeEmptySeats', False)
 
-    # Example of processing the courses, including preferred section and faculty
-    for course in courses:
-        course_name = course['course']
-        preferred_section = course.get('section')
-        preferred_faculty = course.get('faculty')
+    print(courses)
 
-        # You would use these inputs in your schedule generation logic
-        print(f"Course: {course_name}, Preferred Section: {preferred_section}, Preferred Faculty: {preferred_faculty}")
+
+    # Example of processing the courses, including preferred section and faculty
+    # for course in courses:
+    #     course_name = course['course']
+    #     preferred_section = course.get('section')
+    #     preferred_faculty = course.get('faculty')
+
+    #     # You would use these inputs in your schedule generation logic
+    #     print(f"Course: {course_name}, Preferred Section: {preferred_section}, Preferred Faculty: {preferred_faculty}")
 
     # Call your schedule generation function and ensure it returns a list of tuples
+    
     schedules = generate_all_schedules(courses, exclude_empty_seats=exclude_empty_seats)
 
     return Response(generate_large_json(schedules), content_type='application/json')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run()
