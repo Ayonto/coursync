@@ -14,7 +14,7 @@
   ],
   "headers": [
     {
-      "source": "/static/(.*)",  // Apply cache control for static files
+      "source": "/static/(.*)", 
       "headers": [
         {
           "key": "Cache-Control",
