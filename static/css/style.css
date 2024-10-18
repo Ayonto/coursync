@@ -1,6 +1,6 @@
 /* Basic page and table styling */
 body {
-    font-family:cursive;
+    font-family: "Agbalumo", serif;
     margin: 20px;
     background-color: #f7f7f3;
     /* justify-content: center; */
@@ -26,7 +26,7 @@ body {
     margin-right: auto;
 
     color: #2e2c2c;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 18px;
 }
 
@@ -113,6 +113,8 @@ body {
 
     color: #2e2c2c;
 
+    font-family: "Pacifico", cursive;
+
     margin-bottom: 30px;
 }
 
@@ -169,7 +171,8 @@ input[type="text"], input[type="number"] {
     padding: 8px;
     border: 1px solid #ccc;
 
-    font-family:cursive;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 15px;
 }
 
 button {
@@ -180,7 +183,7 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-    font-family:cursive;
+    font-family: "Comfortaa", sans-serif;
     font-weight: bold;
 
     border-radius: 5px;
