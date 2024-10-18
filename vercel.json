@@ -6,15 +6,13 @@
       "use": "@vercel/python"
     }
   ],
-  "headers": [
+  "routes": [
     {
-      "src": "/(.*)", 
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate"  
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "app.py",
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+      }
     }
   ]
 }
