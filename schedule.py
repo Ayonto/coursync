@@ -1,5 +1,4 @@
 from datetime import datetime
-import itertools
 
 import requests
 import json
@@ -8,6 +7,7 @@ import json
 
 def scrape_full_schedule(): 
     url = "https://usis-cdn.eniamza.com/usisdump.json" 
+
     req = requests.get(url)
 
     json_data = json.dumps(req.json(), indent = 2)
@@ -72,88 +72,90 @@ def conflicts(courses):
     
     return False  # No conflicts found
 
-def filter(course, exclude_empty_seats):
-    course_code = course["course"][0:3].upper() + course["course"][3:]
-    section = course["section"]
-    faculty = course["faculty"]
-    avoid = course["avoid"]
-    valid_course_details = []
 
+def filter(taken_courses, exclude_empty_seats=False): 
+    courses_dict = {} # string: dict
 
-    for c in data:
-        if(c["courseCode"] == course_code):
+    for i in taken_courses:
+        course_code = i["course"][0:3].upper() + i["course"][3:]
+        if course_code not in courses_dict: 
+            courses_dict[course_code] = {"validCourseDetails": [], "filter": i}
+
+    for c in data: 
+        if ( c["courseCode"] in courses_dict): 
             if(exclude_empty_seats): # if seat is empty exclude section
                 if(c["defaultSeatCapacity"] - c["totalFillupSeat"] <= 0):
                     continue
-            if(faculty != ''): #only keep prefered faculty
-                if(c["empShortName"] != faculty.upper()): 
+            
+            if(courses_dict[c["courseCode"]]["filter"]["faculty"] != ''): #only keep prefered faculty
+                if(c["empShortName"] != courses_dict[c["courseCode"]]["filter"]["faculty"].upper() ): 
                     continue
             
-            if(avoid != ''): 
-                if(c["empShortName"] == avoid.upper()): 
+            if(courses_dict[c["courseCode"]]["filter"]["avoid"] != ''): 
+                if(c["empShortName"] == courses_dict[c["courseCode"]]["filter"]["avoid"].upper() ): 
                     continue
             
-            if (section != ''): #only keep prefered section
-                if(int(c["courseDetails"][-3:-1]) != int(section)): 
+            if (courses_dict[c["courseCode"]]["filter"]["section"] != ''): #only keep prefered section
+                if(int(c["courseDetails"][-3:-1]) != int(courses_dict[c["courseCode"]]["filter"]["section"])): 
                     continue
-        
-            valid_course_details.append(c)
-    return valid_course_details
-        
+
+
+            # take only preferred time
+            if(courses_dict[c["courseCode"]]["filter"]["pref_time"] != ''): 
+
+                c_time = parse_schedule(c["classSchedule"])
+                # print(c_time)
+                time_matched = False
+                for time in c_time: 
+
+                    # print("pref time: ", end="")
+                    # print(courses_dict[c["courseCode"]]["filter"]["pref_time"])
+
+                    if time[1] == courses_dict[c["courseCode"]]["filter"]["pref_time"]: 
+                        time_matched = True
+
+                if not time_matched: 
+                    continue
+
+                
+            courses_dict[c["courseCode"]]["validCourseDetails"].append(c)
+
+    all_course_details = []
+    for i in courses_dict.keys(): 
+        all_course_details.append(courses_dict[i]["validCourseDetails"])
+    return all_course_details
+
+
+def cartesian_product(*course_schedules): 
+    
+    result = [()]
+
+    for c in course_schedules: 
+
+        temp = []
+        for x in result: 
+            for y in c: 
+                new_tuple = x + (y,)
+                if not conflicts(new_tuple): 
+                    temp.append(new_tuple)
+        result = temp
+    return result
+  
 
 # Main function to generate all non-conflicting schedules
 def generate_all_schedules(taken_courses, exclude_empty_seats):
     # type of taken_courses = [{'course': 'CSE220', 'section': '5', 'faculty': 'ABS'}, {'course': 'CSE250', 'section': '1', 'faculty': ''}, {'course': 'CSE320', 'section': '2', 'faculty': ''}, {'course': 'ECO101', 'section': '3', 'faculty': ''}]
 
-    # Debugging
-    # print(f"EXCLUDE EMPTY SEAT: {exclude_empty_seats}")
-    # print("#######################################")
-    # print(taken_courses)
+    valid_combinations = []
+
+    all_schedules = filter(taken_courses, exclude_empty_seats=exclude_empty_seats)
+    valid_combinations = cartesian_product(*all_schedules)
 
 
-    all_combinations = []
-
-    if(len(taken_courses) == 5): 
-
-        c1_schedules = filter(taken_courses[0], exclude_empty_seats)
-        c2_schedules = filter(taken_courses[1], exclude_empty_seats)
-        c3_schedules = filter(taken_courses[2], exclude_empty_seats)
-        c4_schedules = filter(taken_courses[3], exclude_empty_seats)
-        c5_schedules = filter(taken_courses[4], exclude_empty_seats)
-
-        all_combinations = list(itertools.product(c1_schedules, c2_schedules, c3_schedules, c4_schedules, c5_schedules))
-    
-    if(len(taken_courses) == 4): 
-
-        c1_schedules = filter(taken_courses[0], exclude_empty_seats)
-        c2_schedules = filter(taken_courses[1], exclude_empty_seats)
-        c3_schedules = filter(taken_courses[2], exclude_empty_seats)
-        c4_schedules = filter(taken_courses[3], exclude_empty_seats)
-
-        all_combinations = list(itertools.product(c1_schedules, c2_schedules, c3_schedules, c4_schedules))
-            
-    elif(len(taken_courses) == 3): 
-
-        c1_schedules = filter(taken_courses[0], exclude_empty_seats)
-        c2_schedules = filter(taken_courses[1], exclude_empty_seats)
-        c3_schedules = filter(taken_courses[2], exclude_empty_seats)
-
-        all_combinations = list(itertools.product(c1_schedules, c2_schedules, c3_schedules))
-
-    elif(len(taken_courses) == 2): 
-        c1_schedules = filter(taken_courses[0], exclude_empty_seats)
-        c2_schedules = filter(taken_courses[1], exclude_empty_seats)
-
-        all_combinations = list(itertools.product(c1_schedules, c2_schedules))
-
-    elif(len(taken_courses) == 1): 
-        c1_schedules = filter(taken_courses[0], exclude_empty_seats)
-
-        all_combinations = list(itertools.product(c1_schedules))
+    # print(len(valid_combinations))
+    # print(type(valid_combinations))
+    # print(type(valid_combinations[0][0]))
+    # print(f"Combinations: {len(valid_combinations)}")
         
-    valid_combinations= []
-    for combination in all_combinations: 
-        if not conflicts(combination): valid_combinations.append(combination)
 
-    print(f"Combinations: {len(valid_combinations)}")
     return valid_combinations
