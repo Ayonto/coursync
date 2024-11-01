@@ -3,40 +3,46 @@ document.getElementById("generate-btn").addEventListener("click", () => {
     const section1 = document.getElementById("section1").value;
     const faculty1 = document.getElementById("faculty1").value;
     const avoid1 = document.getElementById("avoid1").value;
+    const pref_time1 = document.getElementById("pref_time1").value;
 
     const course2 = document.getElementById("course2").value;
     const section2 = document.getElementById("section2").value;
     const faculty2 = document.getElementById("faculty2").value;
     const avoid2 = document.getElementById("avoid2").value;
+    const pref_time2 = document.getElementById("pref_time2").value;
 
     const course3 = document.getElementById("course3").value;
     const section3 = document.getElementById("section3").value;
     const faculty3 = document.getElementById("faculty3").value;
     const avoid3 = document.getElementById("avoid3").value;
+    const pref_time3 = document.getElementById("pref_time3").value;
 
     const course4 = document.getElementById("course4").value;
     const section4 = document.getElementById("section4").value;
     const faculty4 = document.getElementById("faculty4").value;
     const avoid4 = document.getElementById("avoid4").value;
+    const pref_time4 = document.getElementById("pref_time4").value;
 
     const course5 = document.getElementById("course5").value;
     const section5 = document.getElementById("section5").value;
     const faculty5 = document.getElementById("faculty5").value;
     const avoid5 = document.getElementById("avoid5").value;
+    const pref_time5 = document.getElementById("pref_time5").value;
 
     const excludeEmptySeats = document.getElementById("exclude-empty-seats").checked;
 
     const courses = [
-        { course: course1, section: section1, faculty: faculty1, avoid: avoid1 },
-        { course: course2, section: section2, faculty: faculty2, avoid: avoid2 },
-        { course: course3, section: section3, faculty: faculty3, avoid: avoid3 },
-        { course: course4, section: section4, faculty: faculty4, avoid: avoid4 },
-        { course: course5, section: section5, faculty: faculty5, avoid: avoid5 }
+        { course: course1, section: section1, faculty: faculty1, avoid: avoid1, pref_time: pref_time1 },
+        { course: course2, section: section2, faculty: faculty2, avoid: avoid2, pref_time: pref_time2 },
+        { course: course3, section: section3, faculty: faculty3, avoid: avoid3, pref_time: pref_time3 },
+        { course: course4, section: section4, faculty: faculty4, avoid: avoid4, pref_time: pref_time4 },
+        { course: course5, section: section5, faculty: faculty5, avoid: avoid5, pref_time: pref_time5 }
     ].filter(entry => entry.course); // Filter out entries with empty course fields
 
     // Display loading spinner
     showLoading();
-
+    resetMessages();  // Reset any previous messages
+    
     fetch('/generate_schedule', {
         method: 'POST',
         headers: {
@@ -55,10 +61,13 @@ document.getElementById("generate-btn").addEventListener("click", () => {
         schedules = data;  // The response is a list of schedules
         currentIndex = 0;
         displaySchedule(currentIndex);  // Display the first schedule combination
+        displayStatusMessage(`Generated ${schedules.length} schedule combinations!`);
+        updateCombinationIndicator();  // Show current viewing combination
     })
     .catch(err => {
         console.error("Error fetching schedules:", err);
         hideLoading();
+        displayErrorMessage("An error occurred while generating the schedule.");
     });
     
 });
@@ -107,10 +116,13 @@ function displaySchedule(index) {
             console.log(row);
 
             if (row > 0 && col > 0) {
-                table.rows[row].cells[col].innerHTML = course.courseDetails;  // Fill in course details
+                // table.rows[row].cells[col].innerHTML = course.courseDetails;
+                table.rows[row].cells[col].innerHTML = course.courseDetails.concat("-", course.empShortName);  // Fill in course details
             }
         });
     });
+
+    updateCombinationIndicator();  // Update combination indicator
 }
 
 // Show/hide loading spinner
@@ -120,6 +132,26 @@ function showLoading() {
 
 function hideLoading() {
     document.getElementById("loading").style.display = "none";
+}
+
+// Reset message display
+function resetMessages() {
+    document.getElementById("status-message").textContent = "";
+    document.getElementById("combination-number").textContent = "";  // Make sure this is empty initially
+}
+
+// Display status messages (e.g., number of combinations generated)
+function displayStatusMessage(message) {
+    const statusMessage = document.getElementById("status-message");
+    statusMessage.textContent = message;
+    statusMessage.style.color = "#2e2c2c";  // Neutral color for success messages
+}
+
+// Display error messages
+function displayErrorMessage(message) {
+    const statusMessage = document.getElementById("status-message");
+    statusMessage.textContent = message;
+    statusMessage.style.color = "red";  // Red color for error messages
 }
 
 // Button event listeners for cycling schedules
@@ -136,3 +168,32 @@ document.getElementById("next-btn").addEventListener("click", () => {
         displaySchedule(currentIndex);
     }
 });
+
+// Prototype - function to download the table 
+
+// function downloadTableAsImage() {
+//     // Reference to the table element
+//     var table = document.getElementById('schedule-table');
+
+//     // Use html2canvas to capture the table as an image
+//     html2canvas(table).then(function (canvas) {
+//         // Create a link element
+//         var link = document.createElement('a');
+//         link.href = canvas.toDataURL(); // Get the image data as a URL (base64)
+//         link.download = 'schedule.png';    // Set the download attribute to specify filename
+
+//         // Trigger the download
+//         link.click();
+//     });
+// }
+
+// Update which combination is being viewed
+function updateCombinationIndicator() {
+    const combinationIndicator = document.getElementById("combination-number");
+    
+    if (schedules.length > 0) {
+        combinationIndicator.textContent = `Viewing combination ${currentIndex + 1} of ${schedules.length}`;
+    } else {
+        combinationIndicator.textContent = "";  // Keep it empty if no schedules exist
+    }
+}

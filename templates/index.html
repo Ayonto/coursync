@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CourSync</title>
 
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="/static/css/style.css?v=1.0.0">
+    <link rel="stylesheet" href="/static/css/style.css?v=1.3.0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,20 +14,17 @@
 </head>
 <body>
     <div class="heading">
-        <h1>CourSync - </h1> 
-        <p>Harmonize Your Courses, Maximize Your Time</p>
+        <h1>CourSync</h1> 
+        <p> - Harmonize Your Courses, Maximize Your Time</p>
     </div>
 
-    <!-- <h1>Course Crafter</h1> -->
-
-    <!-- Input Fields for Course Names, Sections, and Faculty -->
 
 
     <div class="container">
         <!-- Courses Section -->
         <div class="courses">
             <div class="container-text">
-                <p>Course</p>
+                <p>Courses</p>
             </div>
             
             <input id="course1" type="text" placeholder="Course 1 (e.g., CSE220)">
@@ -43,71 +39,83 @@
             <div class="container-text">
                 <p >Filter</p>
             </div>
-            
             <div class="filter-row">
                 <input id="section1" type="number" placeholder="Preferred section">
                 <input id="faculty1" type="text" placeholder="Preferred Fauclty">
-                <input id="avoid1" type="text" placeholder="Avoid faculty">
+                <input id="avoid1" type="text" placeholder="Avoid Faculty">
+                <select id="pref_time1" class="time-selection">
+                    <option value = "" >Preferred Time</option>
+                    <option value = "08:00 AM-09:20 AM">08:00AM-09:20AM</option>
+                    <option value = "09:30 AM-10:50 AM">09:30AM-10:50AM</option>
+                    <option value = "11:00 AM-12:20 PM">11:00AM-12:20AM</option>
+                    <option value = "12:30 PM-01:50 PM">12:30AM-01:50AM</option>
+                    <option value = "02:00 PM-03:20 PM">02:00AM-03:20AM</option>
+                    <option value = "03:30 PM-04:50 PM">03:30AM-04:50AM</option>
+                    <option value = "05:00 PM-06:20 PM">05:00AM-06:20AM</option>
+                </select>
             </div>
             <div class="filter-row">
                 <input id="section2" type="number" placeholder="Preferred section">
                 <input id="faculty2" type="text" placeholder="Preferred Faculty">
-                <input id="avoid2" type="text" placeholder="Avoid faculty">
+                <input id="avoid2" type="text" placeholder="Avoid Faculty">
+                <select id="pref_time2" class="time-selection">
+                    <option value = "" >Preferred Time</option>
+                    <option value = "08:00 AM-09:20 AM">08:00AM-09:20AM</option>
+                    <option value = "09:30 AM-10:50 AM">09:30AM-10:50AM</option>
+                    <option value = "11:00 AM-12:20 PM">11:00AM-12:20AM</option>
+                    <option value = "12:30 PM-01:50 PM">12:30AM-01:50AM</option>
+                    <option value = "02:00 PM-03:20 PM">02:00AM-03:20AM</option>
+                    <option value = "03:30 PM-04:50 PM">03:30AM-04:50AM</option>
+                    <option value = "05:00 PM-06:20 PM">05:00AM-06:20AM</option>
+                </select>
             </div>
             <div class="filter-row">
                 <input id="section3" type="number" placeholder="Preferred section">
                 <input id="faculty3" type="text" placeholder="Preferred Faculty">
-                <input id="avoid3" type="text" placeholder="Avoid faculty">
+                <input id="avoid3" type="text" placeholder="Avoid Faculty">
+                <select id="pref_time3" class="time-selection">
+                    <option value = "" >Preferred Time</option>
+                    <option value = "08:00 AM-09:20 AM">08:00AM-09:20AM</option>
+                    <option value = "09:30 AM-10:50 AM">09:30AM-10:50AM</option>
+                    <option value = "11:00 AM-12:20 PM">11:00AM-12:20AM</option>
+                    <option value = "12:30 PM-01:50 PM">12:30AM-01:50AM</option>
+                    <option value = "02:00 PM-03:20 PM">02:00AM-03:20AM</option>
+                    <option value = "03:30 PM-04:50 PM">03:30AM-04:50AM</option>
+                    <option value = "05:00 PM-06:20 PM">05:00AM-06:20AM</option>
+                </select>
             </div>
             <div class="filter-row">
                 <input id="section4" type="number" placeholder="Preferred section">
                 <input id="faculty4" type="text" placeholder="Preferred Faculty">
-                <input id="avoid4" type="text" placeholder="Avoid faculty">
+                <input id="avoid4" type="text" placeholder="Avoid Faculty">
+                <select id="pref_time4" class="time-selection">
+                    <option value = "" >Preferred Time</option>
+                    <option value = "08:00 AM-09:20 AM">08:00AM-09:20AM</option>
+                    <option value = "09:30 AM-10:50 AM">09:30AM-10:50AM</option>
+                    <option value = "11:00 AM-12:20 PM">11:00AM-12:20AM</option>
+                    <option value = "12:30 PM-01:50 PM">12:30AM-01:50AM</option>
+                    <option value = "02:00 PM-03:20 PM">02:00AM-03:20AM</option>
+                    <option value = "03:30 PM-04:50 PM">03:30AM-04:50AM</option>
+                    <option value = "05:00 PM-06:20 PM">05:00AM-06:20AM</option>
+                </select>
             </div>
             <div class="filter-row">
                 <input id="section5" type="number" placeholder="Preferred section">
                 <input id="faculty5" type="text" placeholder="Preferred Faculty">
-                <input id="avoid5" type="text" placeholder="Avoid faculty">
+                <input id="avoid5" type="text" placeholder="Avoid Faculty">
+                <select id="pref_time5" class="time-selection">
+                    <option value = "" >Preferred Time</option>
+                    <option value = "08:00 AM-09:20 AM">08:00AM-09:20AM</option>
+                    <option value = "09:30 AM-10:50 AM">09:30AM-10:50AM</option>
+                    <option value = "11:00 AM-12:20 PM">11:00AM-12:20AM</option>
+                    <option value = "12:30 PM-01:50 PM">12:30AM-01:50AM</option>
+                    <option value = "02:00 PM-03:20 PM">02:00AM-03:20AM</option>
+                    <option value = "03:30 PM-04:50 PM">03:30AM-04:50AM</option>
+                    <option value = "05:00 PM-06:20 PM">05:00AM-06:20AM</option>
+                </select>
             </div>
         </div>
     </div>
-
-
-
-
-    <!-- <div class="input-row">
-        <input id="course1" type="text" placeholder="Course 1 (e.g., CSE220)">
-        <input id="section1" type="number" placeholder="Preferred Section (e.g., 6)">
-        <input id="faculty1" type="text" placeholder="Faculty Initial (e.g., PQR)">
-        <input id="avoid1" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
-    </div>
-    <div class="input-row">
-        <input id="course2" type="text" placeholder="Course 2 (e.g., MAT215)">
-        <input id="section2" type="number" placeholder="Preferred Section (e.g., 3)">
-        <input id="faculty2" type="text" placeholder="Faculty Initial (e.g., ABC)">
-        <input id="avoid2" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
-    </div>
-    <div class="input-row">
-        <input id="course3" type="text" placeholder="Course 3 (e.g., BIO101)">
-        <input id="section3" type="number" placeholder="Preferred Section (e.g., 5)">
-        <input id="faculty3" type="text" placeholder="Faculty Initial (e.g., XYZ)">
-        <input id="avoid3" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
-    </div>
-    <div class="input-row">
-        <input id="course4" type="text" placeholder="Course 4 (e.g., PHY111)">
-        <input id="section4" type="number" placeholder="Preferred Section (e.g., 1)">
-        <input id="faculty4" type="text" placeholder="Faculty Initial (e.g., DEF)">
-        <input id="avoid4" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
-    </div>
-    <div class="input-row">
-        <input id="course5" type="text" placeholder="Course 5 (e.g., PHY111)">
-        <input id="section5" type="number" placeholder="Preferred Section (e.g., 19)">
-        <input id="faculty5" type="text" placeholder="Faculty Initial (e.g., DEF)">
-        <input id="avoid5" type="text" placeholder=" Avoid Faculty (e.g., PQR)">
-    </div> -->
-
-
-
 
 
     <!-- Exclude Empty Seat Checkbox -->
@@ -122,6 +130,8 @@
     <!-- Button to Generate Schedule -->
 
     <div class = "gen-btn-style"><button id="generate-btn">Generate Schedule</button></div>
+
+    <div class="message" id="status-message"></div>
 
     <!-- <button id="generate-btn">Generate Schedule</button> -->
 
@@ -156,16 +166,30 @@
 
     <div class = "btn-container">
         <button id="previous-btn">Previous</button>
+        <span id="combination-number"></span>
         <button id="next-btn">Next</button>
     </div>
 
     <hr>
+
+    <div class="note">
+        <p>Please varify seat availability and course details manually</p>
+        <p>New sections might not be visible</p>
+        <p>Check for exam clash</p>
+    </div>
+
+    <hr>
+
+    <!-- download table as image  -->
+    <!-- <div class = "download-btn"><button class="download-btn" onclick="downloadTableAsImage()">Download</button></div> -->
+    
     <p class = "cpright">© s.i.ayonto</p>
 
     <!-- <button id="previous-btn">Previous</button>
     <button id="next-btn">Next</button> -->
 
     <!-- Link to external JS file -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 </body>

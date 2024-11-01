@@ -2,7 +2,8 @@
 body {
     font-family: "Agbalumo", serif;
     margin: 20px;
-    background-color: #f7f7f3;
+    background-color: #f1f1ea;
+
     /* justify-content: center; */
     align-items: center;
 }
@@ -36,7 +37,9 @@ body {
 
 /* Courses Section */
 .courses {
-    background-color: #a8ac98;
+    /* background-color: #a8ac98; */
+    background-color: #a3a88f;
+
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     
@@ -58,7 +61,9 @@ body {
 
 /* Filter Section */
 .filter {
-    background-color: #c3c4b5;
+    /* background-color: #c3c4b5; */
+    background-color: #c0c2ae;
+
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     
@@ -82,7 +87,7 @@ body {
     border-radius: 5px;
 }
 
-/* .filter input:nth-child(1) {
+.filter input:nth-child(1) {
     width: 150px; 
 }
 
@@ -92,13 +97,25 @@ body {
 
 .filter input:nth-child(3) {
     width: 150px; 
-} */
+}
 
 /* Prevent wrapping of rows */
 .filter-row, .courses {
     white-space: nowrap;
 }
 
+
+
+
+
+.time-selection { 
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    color: #666666;
+}
 
 
 
@@ -118,27 +135,20 @@ body {
     margin-bottom: 30px;
 }
 
+.heading h1 { 
+    font-size: 32px;
+}
+
+
+
 .heading p { 
     font-size: 18px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 12px;
 
     color: #5a5454;
     
 }
-
-
-/* .input-row {
-
-    max-width: fit-content;
-    margin-left: auto; 
-    margin-right: auto;
-
-
-    display: flex;
-    margin-bottom: 10px;
-}
- */
 
 
 
@@ -166,6 +176,25 @@ body {
 
 
 
+/* Style for the status message shown after generating combinations or error */
+.message {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-family: "Comfortaa", sans-serif;
+    color: #2e2c2c; /* Default color */
+}
+
+/* Style for the current combination number */
+#combination-number {
+    font-size: 16px;
+    font-weight: bold;
+    margin: auto 20px;
+
+    color: #403e3e;
+}
+
+
 input[type="text"], input[type="number"] {
     margin-right: 10px;
     padding: 8px;
@@ -173,13 +202,22 @@ input[type="text"], input[type="number"] {
 
     font-family: "Comfortaa", sans-serif;
     font-size: 15px;
+    font-weight: bold;
+}
+input[type="text"] {
+    text-transform: uppercase; /* This makes the text appear in uppercase */
+}
+
+
+input::placeholder {
+    text-transform: none; /* Ensures the placeholder text remains unchanged */
 }
 
 button {
     /* margin: 10px; */
     margin-top: 5px;
     padding: 10px 20px;
-    background-color: #817669;
+    background-color: #816a61;
     color: white;
     border: none;
     cursor: pointer;
@@ -190,7 +228,7 @@ button {
 }
 
 button:hover {
-    background-color: #94928d;
+    background-color: #96847e;
 }
 
 .btn-container {
@@ -231,6 +269,8 @@ button:hover {
     
     border: 1px solid #403E3E;
     color: #403e3e;
+
+    
 }
 
 #schedule-table th, #schedule-table td {
@@ -251,5 +291,22 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+}
+
+.download-btn { 
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+}
+
+.note { 
+    max-width: fit-content;
+    margin-left: auto; 
+    margin-right: auto;
+
+    text-align: center;
+
+    color: #2e2c2c;
 }
 
