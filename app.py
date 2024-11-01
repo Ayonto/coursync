@@ -24,7 +24,7 @@ def generate_schedule():
     courses = data.get('courses', [])
     exclude_empty_seats = data.get('excludeEmptySeats', False)
 
-    print(courses)
+    # print(courses)
     
     schedules = generate_all_schedules(courses, exclude_empty_seats=exclude_empty_seats)
 

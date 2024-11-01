@@ -67,7 +67,7 @@ document.getElementById("generate-btn").addEventListener("click", () => {
     .catch(err => {
         console.error("Error fetching schedules:", err);
         hideLoading();
-        displayErrorMessage("An error occurred while generating the schedule.");
+        displayErrorMessage("An error occurred while generating the schedule, try changing the fitlers");
     });
     
 });
